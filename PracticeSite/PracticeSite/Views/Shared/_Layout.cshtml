@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+@* "profile in the head tag references the use of icon in the title bar--it's a definition" *@
+<head profile="http://www.w3.org/2005/10/profile">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Sample Page</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+    <link rel="icon"
+          type="image/png"
+          href="~/Images/j-icon.png">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="masthead">
+
+            <h3 class="text-muted">@Html.ActionLink("Jeff Sample Website", "Index", "Home")</h3>
+            <ul class="nav nav-justified">
+                <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "active" })</li>
+                <li>@Html.ActionLink("About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Home")</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Sample Page</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
