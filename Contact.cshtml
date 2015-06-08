@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+@section styles{
+    <!-- Default Styling for Google Maps API -->
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map-canvas {
+            height: 100%;
+        }
+    </style>
+    <link href="~/Content/googleMap.css" rel="stylesheet" />
+    <link href="~/Content/contactPageStyles.css" rel="stylesheet" />
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="maps">
+    <div id="map-canvas" style="width: 100%; height: 100%"></div>
+</div>
+
+
+<address id="contactI nfo">
+    <strong>
+        Carson, CA 90746 <br />
+        <abbr title="Phone">P:</abbr>
+        323.207.5088
+    </strong>
+</address>
+
+
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:tech.jeffj@gmail.com">tech.jeffj@gmail.com</a><br />
+
+</address>
+
+@section scripts{
+
+    <!--Includes the Google Map--holds the Javascript file that loads all of the symbols and definitions needed for
+        Google Maps API -->
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKAjc7JLCAN8um9WJzMpeCNafpoiLgnw8">
+    </script>
+
+    <!--Google Map Javascript-->
+    <script type="text/javascript">
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(33.8452941, -118.2590592);
+
+            var mapOptions = {
+                zoom: 12,
+                center: myLatlng,
+                scrollwheel: false
+            }
+
+            var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Where I\' from!'
+            });
+        }
+            google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <!--end of Google Map-->
+}
